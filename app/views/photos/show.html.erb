@@ -1,31 +1,77 @@
-<div class="page-header">
-  <h3>Photo #<%= @photo.id %></h3>
+ <div class="container">
+   <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">
+            <a href="/users/1"><%= @photo.user.username.capitalize %></a>
+            <small>
+              <%= @photo.created_at %>
+            </small>
+          </h3>
+        </div>
+        <div class="panel-body">
+          <a href="/photos/<%= @photo.id %>">
+            <img src="<%= @photo.image %>" class="img-responsive">
+          </a>
+          <div class="row">
+            <div class="col-md-12">
+              <dl class="dl-horizontal">
+                <dd></dd>
+              </dl>
+
+              <ul class="media-list">
+                <% @photo.comments.each do |comment| %>
+                <li class="media">
+                  <div class="media-body">
+                    <h6 class="media-heading">
+                      <a href="/users/<%= comment.user_id %>"><%= comment.user.username.capitalize %></a>
+                      <small>
+                        about <%= comment.created_at %>
+                      </small>
+                    </h6>
+                    <%= comment.body %>
+                  </div>
+                </li>
+                <% end %>
+                <li class="media">
+                  <form action="/create_comment">
+                    <textarea id="content" name="content" placeholder="Add your comment" class="form-control" rows="3"></textarea>
+
+                    <input type="hidden" id="photo_id" name="photo_id" value="<%= @photo.id %>">
+
+                    <input type="hidden" id="user_id" name="user_id" value="<%= current_user.id %>">
+
+                    <input type="submit" value="Create Comment" class="btn btn-primary">
+                  </form>
+                </li>
+              </ul>
+
+            </div>
+
+          </div>
+        </div></div>
+        <div class="btn-group btn-group-justified">
+          <a href="/photos" class="btn btn-primary">
+            <i class="fa fa-chevron-left"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div></div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <dl class="dl-horizontal">
-      <dt>Caption</dt>
-      <dd><%= @photo.caption %></dd>
 
-      <dt>Image</dt>
-      <dd><img src="<%= @photo.image %>" width = 720></dd>
 
-      <dt>User</dt>
-      <dd><%= @photo.user_id %></dd>
 
-    </dl>
 
-    <div class="btn-group btn-group-justified">
-      <a href="/photos" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/photos/<%= @photo.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_photo/<%= @photo.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
-    </div>
-  </div>
+<hr>
+
+</div>
+</div>
+</div>
+
 </div>
