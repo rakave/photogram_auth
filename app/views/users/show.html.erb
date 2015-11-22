@@ -1,146 +1,71 @@
-<div class="container">
-
-    <div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="jumbotron">
-      <h3>
-        <%= @user.username.capitalize %>
-      </h3>
-    </div>
-  </div>
+<div class="page-header">
+  <h3><%= @user.username.capitalize %></h3>
 </div>
 
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+      <tr>
+
+        <th>Caption</th>
+
+        <th>Image</th>
+
+        <th>Actions</th>
+      </tr>
+
+      <% @user.photos.each do |photo| %>
+      <tr>
+
+        <td><%= photo.caption %></td>
+
+        <td><img src="<%= photo.image %>" width="720"></td>
+
+
+        <td>
+
+          <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
+          <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
+          <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">
-          <a href="/users/<%= @user.id %>"><%= @user.username.capitalize %></a>
+          <a href="/users/2">bob</a>
           <small>
-            about 13 hours ago
+            7 days ago
           </small>
         </h3>
       </div>
 
       <div class="panel-body">
-        <a href="/photos/1">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Lake_Bondhus_Norway_2862.jpg/1280px-Lake_Bondhus_Norway_2862.jpg" class="img-responsive">
+        <a href="/photos/14">
+          <img src="https://photogram-bucket.s3.amazonaws.com/uploads/photo/image/14/1280px-Biandintz_eta_zaldiak_-_modified2.jpg" class="img-responsive">
         </a>
 
         <p>
             </p><form action="/create_like" method="post">
               <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
+              <input name="authenticity_token" type="hidden" value="1KtXibO8QEEvDjyRZXhkb8hEWpo0FyIolgI6LogLfVdkSgsa70DVvk0l6sEgNDwQ40OWFwh+qI2ak0i+6mTq1g==">
 
-              <input type="hidden" name="photo_id" value="1">
+              <input type="hidden" name="photo_id" value="14">
 
-              <input type="hidden" name="user_id" value="2">
-
-              <button class="btn btn-link">
-                <i class="fa fa-heart-o"></i>
-              </button>
-
-              carol
-              likes
-              this
-            </form>
-        <p></p>
-
-        <ul class="media-list">
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Lake Bondhus
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/3">carol</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Try to calculate the THX hard drive, maybe it will program the online hard drive!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              If we parse the interface, we can get to the ADP protocol through the back-end HDD pixel!
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <form action="/create_comment" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-                <input type="hidden" name="photo_id" value="1">
-
-                <input type="hidden" name="user_id" value="2">
-
-                <!-- Label and input for body -->
-                <div class="form-group">
-                  <label for="body" class="sr-only">
-                    Body
-                  </label>
-
-                  <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" required="">
-                </div>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a href="/users/1">alice</a>
-          <small>
-            about 13 hours ago
-          </small>
-        </h3>
-      </div>
-
-      <div class="panel-body">
-        <a href="/photos/2">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lanzarote_5_Luc_Viatour.jpg/1280px-Lanzarote_5_Luc_Viatour.jpg" class="img-responsive">
-        </a>
-
-        <p>
-            </p><form action="/create_like" method="post">
-              <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-              <input type="hidden" name="photo_id" value="2">
-
-              <input type="hidden" name="user_id" value="2">
+              <input type="hidden" name="user_id" value="6">
 
               <button class="btn btn-link">
                 <i class="fa fa-heart-o"></i>
               </button>
 
-              carol and alice
+              carol, dave, alice, and bob
               like
               this
             </form>
@@ -151,566 +76,9 @@
           <li class="media">
             <div class="media-body">
               <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Cueva de los Verdes
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Use the virtual USB array, then you can generate the mobile driver!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              The IB microchip is down, parse the multi-byte microchip so we can generate the JBOD bus!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
                 <a href="/users/2">bob</a>
                 <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Try to hack the RAM matrix, maybe it will generate the neural microchip!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              I'll index the digital SMTP panel, that should bus the SAS port!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              programming the port won't do anything, we need to copy the neural SMTP card!
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <form action="/create_comment" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-                <input type="hidden" name="photo_id" value="2">
-
-                <input type="hidden" name="user_id" value="2">
-
-                <!-- Label and input for body -->
-                <div class="form-group">
-                  <label for="body" class="sr-only">
-                    Body
-                  </label>
-
-                  <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" required="">
-                </div>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a href="/users/1">alice</a>
-          <small>
-            about 13 hours ago
-          </small>
-        </h3>
-      </div>
-
-      <div class="panel-body">
-        <a href="/photos/3">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Fire_breathing_2_Luc_Viatour.jpg/1280px-Fire_breathing_2_Luc_Viatour.jpg" class="img-responsive">
-        </a>
-
-        <p>
-            </p><form action="/create_like" method="post">
-              <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-              <input type="hidden" name="photo_id" value="3">
-
-              <input type="hidden" name="user_id" value="2">
-
-              <button class="btn btn-link">
-                <i class="fa fa-heart-o"></i>
-              </button>
-
-              <small class="text-muted">be the first to like this</small>
-            </form>
-        <p></p>
-
-        <ul class="media-list">
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Jaipur
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/2">bob</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Try to copy the COM feed, maybe it will index the wireless microchip!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              If we parse the program, we can get to the AI bus through the primary AGP panel!
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <form action="/create_comment" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-                <input type="hidden" name="photo_id" value="3">
-
-                <input type="hidden" name="user_id" value="2">
-
-                <!-- Label and input for body -->
-                <div class="form-group">
-                  <label for="body" class="sr-only">
-                    Body
-                  </label>
-
-                  <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" required="">
-                </div>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a href="/users/1">alice</a>
-          <small>
-            about 13 hours ago
-          </small>
-        </h3>
-      </div>
-
-      <div class="panel-body">
-        <a href="/photos/4">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Ніжний_ранковий_світло.jpg/1280px-Ніжний_ранковий_світло.jpg" class="img-responsive">
-        </a>
-
-        <p>
-            </p><form action="/create_like" method="post">
-              <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-              <input type="hidden" name="photo_id" value="4">
-
-              <input type="hidden" name="user_id" value="2">
-
-              <button class="btn btn-link">
-                <i class="fa fa-heart-o"></i>
-              </button>
-
-              carol and alice
-              like
-              this
-            </form>
-        <p></p>
-
-        <ul class="media-list">
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Sviati Hory
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/2">bob</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              The SMTP hard drive is down, hack the multi-byte panel so we can compress the FTP firewall!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/2">bob</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              I'll connect the virtual SDD driver, that should interface the JBOD circuit!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/2">bob</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              The ADP circuit is down, back up the auxiliary card so we can back up the SMTP firewall!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/3">carol</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Use the primary EXE port, then you can connect the redundant hard drive!
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <form action="/create_comment" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-                <input type="hidden" name="photo_id" value="4">
-
-                <input type="hidden" name="user_id" value="2">
-
-                <!-- Label and input for body -->
-                <div class="form-group">
-                  <label for="body" class="sr-only">
-                    Body
-                  </label>
-
-                  <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" required="">
-                </div>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a href="/users/1">alice</a>
-          <small>
-            about 13 hours ago
-          </small>
-        </h3>
-      </div>
-
-      <div class="panel-body">
-        <a href="/photos/5">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Mostar_Old_Town_Panorama_2007.jpg/1280px-Mostar_Old_Town_Panorama_2007.jpg" class="img-responsive">
-        </a>
-
-        <p>
-            </p><form action="/create_like" method="post">
-              <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-              <input type="hidden" name="photo_id" value="5">
-
-              <input type="hidden" name="user_id" value="2">
-
-              <button class="btn btn-link">
-                <i class="fa fa-heart-o"></i>
-              </button>
-
-              carol and alice
-              like
-              this
-            </form>
-        <p></p>
-
-        <ul class="media-list">
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Mostar
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              The XML microchip is down, bypass the back-end pixel so we can navigate the TCP transmitter!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/3">carol</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              If we bypass the interface, we can get to the SMS capacitor through the auxiliary XSS monitor!
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <form action="/create_comment" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-                <input type="hidden" name="photo_id" value="5">
-
-                <input type="hidden" name="user_id" value="2">
-
-                <!-- Label and input for body -->
-                <div class="form-group">
-                  <label for="body" class="sr-only">
-                    Body
-                  </label>
-
-                  <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" required="">
-                </div>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a href="/users/1">alice</a>
-          <small>
-            about 13 hours ago
-          </small>
-        </h3>
-      </div>
-
-      <div class="panel-body">
-        <a href="/photos/6">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Elakala_Waterfalls_Swirling_Pool_Mossy_Rocks.jpg/1280px-Elakala_Waterfalls_Swirling_Pool_Mossy_Rocks.jpg" class="img-responsive">
-        </a>
-
-        <p>
-            </p><form action="/create_like" method="post">
-              <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-              <input type="hidden" name="photo_id" value="6">
-
-              <input type="hidden" name="user_id" value="2">
-
-              <button class="btn btn-link">
-                <i class="fa fa-heart-o"></i>
-              </button>
-
-              alice
-              likes
-              this
-            </form>
-        <p></p>
-
-        <ul class="media-list">
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Elakala
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/2">bob</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              bypassing the transmitter won't do anything, we need to calculate the wireless XML monitor!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              Try to input the EXE interface, maybe it will override the multi-byte card!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/2">bob</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              navigating the panel won't do anything, we need to reboot the haptic EXE panel!
-            </div>
-          </li>
-
-          <li class="media">
-            <div class="media-body">
-              <form action="/create_comment" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-                <input type="hidden" name="photo_id" value="6">
-
-                <input type="hidden" name="user_id" value="2">
-
-                <!-- Label and input for body -->
-                <div class="form-group">
-                  <label for="body" class="sr-only">
-                    Body
-                  </label>
-
-                  <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" required="">
-                </div>
-              </form>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          <a href="/users/1">alice</a>
-          <small>
-            about 13 hours ago
-          </small>
-        </h3>
-      </div>
-
-      <div class="panel-body">
-        <a href="/photos/7">
-          <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Biandintz_eta_zaldiak_-_modified2.jpg/1280px-Biandintz_eta_zaldiak_-_modified2.jpg" class="img-responsive">
-        </a>
-
-        <p>
-            </p><form action="/create_like" method="post">
-              <!-- Hidden input for authenticity token to protect from forgery -->
-              <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
-
-              <input type="hidden" name="photo_id" value="7">
-
-              <input type="hidden" name="user_id" value="2">
-
-              <button class="btn btn-link">
-                <i class="fa fa-heart-o"></i>
-              </button>
-
-              <small class="text-muted">be the first to like this</small>
-            </form>
-        <p></p>
-
-        <ul class="media-list">
-
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/1">alice</a>
-                <small>
-                  about 13 hours ago
+                  7 days ago
                 </small>
               </h6>
               Biandintz
@@ -720,12 +88,45 @@
           <li class="media">
             <div class="media-body">
               <h6 class="media-heading">
-                <a href="/users/2">bob</a>
+                <a href="/users/3">carol</a>
                 <small>
-                  about 13 hours ago
+                  7 days ago
                 </small>
               </h6>
-              If we synthesize the monitor, we can get to the SDD pixel through the bluetooth RAM monitor!
+              Use the haptic SCSI panel, then you can back up the back-end transmitter!
+            </div>
+          </li>
+          <li class="media">
+            <div class="media-body">
+              <h6 class="media-heading">
+                <a href="/users/2">bob</a>
+                <small>
+                  7 days ago
+                </small>
+              </h6>
+              copying the port won't do anything, we need to synthesize the multi-byte XML system!
+            </div>
+          </li>
+          <li class="media">
+            <div class="media-body">
+              <h6 class="media-heading">
+                <a href="/users/5">ellen</a>
+                <small>
+                  7 days ago
+                </small>
+              </h6>
+              The SSL program is down, copy the virtual application so we can connect the CSS circuit!
+            </div>
+          </li>
+          <li class="media">
+            <div class="media-body">
+              <h6 class="media-heading">
+                <a href="/users/4">dave</a>
+                <small>
+                  7 days ago
+                </small>
+              </h6>
+              The SCSI program is down, bypass the digital sensor so we can calculate the FTP application!
             </div>
           </li>
           <li class="media">
@@ -733,21 +134,10 @@
               <h6 class="media-heading">
                 <a href="/users/1">alice</a>
                 <small>
-                  about 13 hours ago
+                  7 days ago
                 </small>
               </h6>
-              parsing the bus won't do anything, we need to transmit the primary SQL sensor!
-            </div>
-          </li>
-          <li class="media">
-            <div class="media-body">
-              <h6 class="media-heading">
-                <a href="/users/3">carol</a>
-                <small>
-                  about 13 hours ago
-                </small>
-              </h6>
-              calculating the program won't do anything, we need to compress the bluetooth SQL sensor!
+              If we copy the pixel, we can get to the RAM protocol through the wireless SSL protocol!
             </div>
           </li>
 
@@ -755,11 +145,11 @@
             <div class="media-body">
               <form action="/create_comment" method="post">
                 <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="UXZThTQtxLnV6qniKZsXSp/1jdB/u7AYpJ5O7hNklpILEwH3C2MzUHu04cgHoVYGlhM6wPkvpCstIzCGOBeLIg==">
+                <input name="authenticity_token" type="hidden" value="1KtXibO8QEEvDjyRZXhkb8hEWpo0FyIolgI6LogLfVdkSgsa70DVvk0l6sEgNDwQ40OWFwh+qI2ak0i+6mTq1g==">
 
-                <input type="hidden" name="photo_id" value="7">
+                <input type="hidden" name="photo_id" value="14">
 
-                <input type="hidden" name="user_id" value="2">
+                <input type="hidden" name="user_id" value="6">
 
                 <!-- Label and input for body -->
                 <div class="form-group">
@@ -777,12 +167,3 @@
     </div>
   </div>
 </div>
-
-
-
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <hr>
-      </div>
-    </div>
-  </div>

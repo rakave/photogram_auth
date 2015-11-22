@@ -21,8 +21,10 @@
         <td><a href="/photos/<%= photo.id %>"><img src="<%= photo.image %>" width=720></a></td>
         <td><%= photo.user.username.capitalize %></td>
         <td>
+          <% if current_user.id==photo.user_id %>
           <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
           <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <% end %>
         </td>
       </tr>
       <% end %>
