@@ -40,9 +40,10 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-        <li><a href="/users"><i class="fa fa-users"> All Users</i></a></li>
-        <li><a href="/photos"><i class="fa fa-camera"> All Posts</i></a></li>
-        <li><a href="/my_likes"><i class="fa fa-heart"> My Likes</i></a></li></i>
+          <li><a href="/users"><i class="fa fa-users"> All Users</i></a></li>
+          <li><a href="/photos"><i class="fa fa-camera"> All Posts</i></a></li>
+          <li><a href="/my_likes"><i class="fa fa-heart"> My Likes</i></a></li></i>
+          <li><a href="/users/<%= current_user.id %>"><i class="fa fa-user"></i> My Wall</a></li>
           <li><a href="/comments">Comments</a></li>
           <li><a href="/likes">Likes</a></li>
 
